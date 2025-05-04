@@ -1,4 +1,4 @@
-package workon
+package main
 
 import (
     "fmt"
@@ -8,9 +8,6 @@ import (
     "path/filepath"
     "strings"
 )
-
-// VERSION is set at build time using -ldflags "-X main.VERSION=..."
-var VERSION string
 
 func main() {
     file := filepath.Base(os.Args[0])
@@ -25,7 +22,7 @@ func main() {
         log.Fatalf("Failed to create working directory: %v", err)
     }
 
-    logPath := filepath.Join(workingDir, "workon.log")
+    logPath := filepath.Join(workingDir, "workingon.log")
 
     logFile, err := os.OpenFile(logPath, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
     if err != nil {
@@ -37,9 +34,42 @@ func main() {
     log.SetFlags(log.LstdFlags)
 
     args := os.Args[1:]
-    if len(args) == 0 || args[0] != "log" {
+    if len(args) == 0 {
         fmt.Printf("Usage: %s log [message]\n", file)
-        fmt.Printf("Version: %s\n", VERSION)
+        fmt.Printf("       %s ls\n", file)
+        fmt.Printf("       %s last\n", file)
+        fmt.Printf("       %s path\n", file)
+        os.Exit(1)
+    }
+
+    if args[0] == "ls" {
+        data, err := os.ReadFile(logPath)
+        if err != nil {
+            log.Fatalf("Failed to read log file: %v", err)
+        }
+        fmt.Print(string(data))
+        return
+    }
+
+    if args[0] == "last" {
+        data, err := os.ReadFile(logPath)
+        if err != nil {
+            log.Fatalf("Failed to read log file: %v", err)
+        }
+        lines := strings.Split(strings.TrimRight(string(data), "\n"), "\n")
+        if len(lines) > 0 && lines[0] != "" {
+            fmt.Println(lines[len(lines)-1])
+        }
+        return
+    }
+
+    if args[0] == "path" {
+        fmt.Println(logPath)
+        return
+    }
+
+    if args[0] != "log" {
+        fmt.Printf("Usage: %s log [message]\n       %s ls\n       %s last\n       %s path\n", file, file, file, file)
         os.Exit(1)
     }
 
@@ -56,5 +86,10 @@ func main() {
     cwd, _ := os.Getwd()
     logMsg := fmt.Sprintf("\"%s\" %s (%s)", text, shortHash, cwd)
     log.Println(logMsg)
-    fmt.Println(logMsg) // Also print to stdout, similar to StreamHandler
+
+    red := "\033[31m"
+    green := "\033[32m"
+    reset := "\033[0m"
+    coloredMsg := fmt.Sprintf("\"%s\" %s%s%s (%s%s%s)", text, red, shortHash, reset, green, cwd, reset)
+    fmt.Println(coloredMsg)
 }
