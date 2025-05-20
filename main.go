@@ -11,6 +11,8 @@ import (
 	"strings"
 )
 
+var Version string
+
 func main() {
 	file := filepath.Base(os.Args[0])
 
@@ -46,11 +48,12 @@ func main() {
 	listNum := listCmd.Int("n", 0, "Show last n log entries")
 
 	if len(os.Args) < 2 {
+		fmt.Printf("WorkingOn: %s\n\n", Version)
 		fmt.Printf("Usage: %s log [message]\n", file)
 		fmt.Printf("       %s ls [-n N] | list [-n N]\n", file)
 		fmt.Printf("       %s last\n", file)
 		fmt.Printf("       %s path\n", file)
-		fmt.Printf("> Log file path: %s\n", logPath)
+		fmt.Printf("path: %s\n", logPath)
 		os.Exit(1)
 	}
 

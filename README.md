@@ -38,9 +38,9 @@ Usage:
 
 ```sh
 Usage: wko log [message]
-       wko ls | list - List Messages
-       wko last - Last Message
-       wko path - outputs log path
+       wko ls [-n N] | list [-n N]
+       wko last
+       wko path
 ```
 
 
@@ -59,6 +59,10 @@ make
 cp bin/osx/wko /usr/local/bin/
 ```
 
+## Todo:
 
-
+- config file
+- built in grep for current directory
+- better logging file (sqlite?)
+- 
 
