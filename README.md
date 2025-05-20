@@ -41,11 +41,13 @@ git log -1 --oneline | wko log
 
 ## Build
 
+
 ```sh
 make
 ```
 
-### Test:
+## Test:
+
 
 ```sh
 go test
@@ -53,7 +55,8 @@ go test
 
 ## Installation
 
-*nix
+
+***nix**
 
 ```sh
 cp bin/osx/wko /usr/local/bin/
