@@ -18,7 +18,7 @@ Usage: wko log [message]
 
 ```sh
 wko log building the app
-# writes to ~/workingon.log
+# writes to ~/.workingon/workingon.log
 # outputs: 
 > "building the app" [git:123456] (/some/path)
 
