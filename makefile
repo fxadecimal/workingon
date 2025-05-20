@@ -6,8 +6,8 @@ APP_NAME := wko
 osx:
 	GOOS=darwin GOARCH=arm64 CGO_ENABLED=0 \
 	go build -o bin/osx/$(APP_NAME) .
-	cp bin/osx/$(APP_NAME) ./
-
+	cp bin/osx/$(APP_NAME) .
+	
 linux:
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 \
 	go build -o bin/linux/$(APP_NAME) .

@@ -6,7 +6,7 @@ A go-lang command line app that logs what you're working on
 wko log building the app
 # writes to ~/workingon.log
 # outputs:
-> "building the app" [git:a023068] (/Users/neil/working_directory/coding/go-lang/go-workingonit)
+> "building the app" [git:123456] (/some/path)
 ```
 
 Usage:
@@ -15,6 +15,7 @@ Usage:
 Usage: wko log [message]
        wko ls - List Messages
        wko last - Last Message
+       wko path - outputs log path
 ```
 
 
