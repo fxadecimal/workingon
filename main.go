@@ -48,7 +48,15 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to read log file: %v", err)
 		}
-		fmt.Print(string(data))
+		lines := strings.Split(strings.TrimRight(string(data), "\n"), "\n")
+		if len(args) > 1 {
+			n := 0
+			fmt.Sscanf(args[1], "%d", &n)
+			if n > 0 && n < len(lines) {
+				lines = lines[len(lines)-n:]
+			}
+		}
+		fmt.Println(strings.Join(lines, "\n"))
 		return
 	}
 
