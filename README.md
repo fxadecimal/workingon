@@ -1,6 +1,15 @@
-# Working On it
+# Working On It 
 
-A go-lang command line app that logs what you're working on
+A go-based personal log file
+
+---
+
+Problem: I've often have 2-6 projects on the go that I need to dip in and out of
+
+
+
+
+## Quickstart
 
 ```sh
 wko log building the app
@@ -44,10 +53,12 @@ make
 
 ## Installation
 
-Osx:
+*nix
 
 ```sh
 cp bin/osx/wko /usr/local/bin/
 ```
+
+
 
 

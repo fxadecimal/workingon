@@ -19,7 +19,7 @@ func main() {
 		log.Fatalf("Failed to get home directory: %v", err)
 	}
 
-	workingDir := filepath.Join(homeDir)
+	workingDir := filepath.Join(homeDir, ".workingon")
 	if err := os.MkdirAll(workingDir, 0755); err != nil {
 		log.Fatalf("Failed to create working directory: %v", err)
 	}
@@ -50,6 +50,7 @@ func main() {
 		fmt.Printf("       %s ls [-n N] | list [-n N]\n", file)
 		fmt.Printf("       %s last\n", file)
 		fmt.Printf("       %s path\n", file)
+		fmt.Printf("> Log file path: %s\n", logPath)
 		os.Exit(1)
 	}
 
