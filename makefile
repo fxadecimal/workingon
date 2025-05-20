@@ -22,4 +22,10 @@ clean:
 	mkdir -p bin/linux
 	mkdir -p bin/windows
 
+zip:
+	rm -rf release && mkdir -p release
+	zip -r release/$(APP_NAME)-osx-$(VERSION).zip bin/osx/$(APP_NAME) 
+	zip -r release/$(APP_NAME)-linux-$(VERSION).zip bin/linux/$(APP_NAME) 
+	zip -r release/$(APP_NAME)-windows-$(VERSION).zip bin/windows/$(APP_NAME).exe
+
 .phony: osx clean linux windows
