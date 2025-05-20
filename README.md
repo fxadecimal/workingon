@@ -1,12 +1,17 @@
 # Working On It 
 
-A go-based personal log file
-
----
+Solution: A go-based personal log file
 
 Problem: I've often have 2-6 projects on the go that I need to dip in and out of
 
+## Usage:
 
+```sh
+Usage: wko log [message]
+       wko ls [-n N] | list [-n N]
+       wko last
+       wko path
+```
 
 
 ## Quickstart
@@ -34,22 +39,17 @@ git log -1 --oneline | wko log
 
 ```
 
-Usage:
-
-```sh
-Usage: wko log [message]
-       wko ls [-n N] | list [-n N]
-       wko last
-       wko path
-```
-
-
 ## Build
 
 ```sh
 make
 ```
 
+### Test:
+
+```sh
+go test
+```
 
 ## Installation
 
@@ -61,8 +61,8 @@ cp bin/osx/wko /usr/local/bin/
 
 ## Todo:
 
+- best testing
 - config file
 - built in grep for current directory
 - better logging file (sqlite?)
-- 
 
