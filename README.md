@@ -2,7 +2,7 @@
 
 Solution: A go-based personal log file
 
-Problem: I've often have 2-6 projects on the go that I need to dip in and out of
+Problem: I've often have 2-6 projects on the go that I need to work on that I forget
 
 ## Usage:
 
